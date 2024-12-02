@@ -1,0 +1,17 @@
+{
+  "name": "automation-novey",
+  "version": "1.0.0",
+  "description": "Automation-Novey.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^21.0.3",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.3",
+    "cypress": "^13.16.0"
+  }
+}
