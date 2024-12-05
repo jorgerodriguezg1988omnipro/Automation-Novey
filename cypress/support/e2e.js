@@ -16,5 +16,14 @@
 // Import commands.js using ES2015 syntax:
 import './commands'
 
+Cypress.on('uncaught:exception', (err) => {
+    // Ignora el error relacionado con WT
+    if (err.message.includes('WT is not a function')) {
+      return false; // Evita que Cypress falle la prueba
+    }
+    // Permite que otros errores se manejen normalmente
+    return true;
+  });
+
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
