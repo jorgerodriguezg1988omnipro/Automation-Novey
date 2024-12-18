@@ -12,6 +12,16 @@ const titleSuscribete = 'h3[data-content-type="heading"]:contains("Suscríbete")
 const newsletter = '#newsletter';
 const botonEnviarNewsletter = '#newsletter-validate-detail > div > div > label > div > button';
 const titleSocialMedia = 'h3[data-content-type="heading"]:contains("Síguenos en")';
+const contenedorPrincipalesOfertas = '#maincontent > div.columns > div > div:nth-child(4) > div > div:nth-child(4) > div > div > div > div.main-offers__products-wrapper > div.main-offers__products.swiper.swiper-initialized.swiper-horizontal.swiper-backface-hidden'
+const buttonAgregarProdPrincipalesOfertas = 'button.quick-add[type="button"][title="Agregar"]'
+const iconCart = 'a.action.showcart'
+const buttonVerResumen = 'a.action.viewcart'
+const titleCarrito = '[data-ui-id="page-title-wrapper"]'
+const buttonUsuario = 'ul.header.links li.customer-welcome button.action.switch'
+const linkMiCuenta = 'div.customer-menu a[href="https://mcstaging.novey.com.pa/novey_panama/customer/account/"]'
+const linkCerrarSesion = 'li.link.authorization-link.logged-in a.action.profile'
+
+
 // Conjunto de links a validar
 const links = [
     { selector: 'a[href="https://www.instagram.com/noveypanama/"]', href: 'https://www.instagram.com/noveypanama/' },
@@ -72,6 +82,55 @@ class home {
 
         links.forEach(link => validateLink(link.selector, link.href)); // llama la funcion y valida todos los links
     }
+
+    addProductFromHome() {
+        cy.visit('/');
+        cy.wait(12000)
+        cy.get(contenedorPrincipalesOfertas).should('be.visible')
+        cy.get(buttonAgregarProdPrincipalesOfertas).should('be.visible').first().click()
+        cy.wait(2000)
+        cy.get('span.counter.qty')
+        .should('be.visible')
+        .find('span.counter-number')
+        .should('have.text', '1'); 
+    }
+
+    gotoCart() {
+        cy.get(iconCart).should('be.visible').click()
+        cy.get(buttonVerResumen).should('be.visible').click()
+        cy.get(titleCarrito).should('be.visible').and('have.text', 'Tu carrito');
+      }
+    
+    gotoMyAccount() {
+        cy.get(buttonUsuario)
+        .realHover()
+        .click({ force: true })
+        cy.wait(1000)
+        cy.get('div.customer-menu')
+        .should('have.attr', 'aria-hidden', 'false').and('be.visible');
+        cy.get(linkMiCuenta)
+        .should('be.visible')
+        .and('contain', 'Mi cuenta')
+        .click({ force: true })
+        cy.wait(4000)
+      }
+
+      gotoCerrarSesion() {
+        cy.get(buttonUsuario)
+        .realHover()
+        .click({ force: true })
+        cy.wait(1000)
+        cy.get('div.customer-menu')
+        .should('have.attr', 'aria-hidden', 'false').and('be.visible');
+        cy.get('li.link.authorization-link.logged-in').should('be.visible');
+        cy.get(linkCerrarSesion) //
+        .should('be.visible') //
+        .and('contain', 'Cerrar sesión') //
+        .first()
+        .click() //
+        cy.wait(4000) //
+      }
+      
 
 }
   

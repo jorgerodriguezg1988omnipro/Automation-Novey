@@ -10,7 +10,7 @@ const Home = new home();
 beforeEach(() => {      
     cy.clearCookies();
     cy.clearLocalStorage() ;
-    cy.viewport(1500, 900);  
+    cy.viewport(1920, 1280);  
   });
 
 Given('Que el usuario ingresa a la pagina web', () => {

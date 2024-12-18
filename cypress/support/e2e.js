@@ -25,5 +25,15 @@ Cypress.on('uncaught:exception', (err) => {
     return true;
   });
 
+  Cypress.on('uncaught:exception', (err, runnable) => {
+    // Retorna false para prevenir que Cypress falle debido a errores no manejados
+    if (err.message.includes("Cannot read properties of undefined (reading 'data')")) {
+      return false;
+    }
+  
+    // Permite que otros errores no controlados sigan fallando la prueba
+    return true;
+  });
+
 // Alternatively you can use CommonJS syntax:
 // require('./commands')

@@ -1,0 +1,34 @@
+{
+  "validUser": {
+    "email": "jorge.rodriguez.g.ap+01@gmail.com",
+    "password": "Omni.pro"
+  },
+  "invalidUser": {
+    "email": "usuario_invalido@ejemplo.com",
+    "password": "wrongpassword"
+  },
+  "validEmailWrongPassword": {
+    "email": "jorge.rodriguez.g.ap+01@gmail.com",
+    "password": "wrongpassword"
+  },
+  "validPasswordWrongEmail": {
+    "email": "usuario_invalido@ejemplo.com",
+    "password": "Omni.pro"
+  },
+  "invalidEmail": {
+    "email": "usuario_invalido@ejemplo.com"    
+  },
+  "validEmail": {
+    "email": "jorge.rodriguez.g.ap+01@gmail.com"    
+  },
+  "validPassword": {
+    "password": "Omni.pro"
+  },
+  "invalidPassword": {
+    "password": "wrongpassword"
+  }
+
+
+
+
+}
