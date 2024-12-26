@@ -3,7 +3,7 @@ const credentials = require('../../fixtures/CuentasDePrueba.json');
 
 import home from '../../pageObjects/home';
 const Home = new home();
-import login from '../../pageObjects/login';
+import login from '../../pageObjects/Login';
 const Login = new login();
 import cart from '../../pageObjects/cart';
 const Cart = new cart();
